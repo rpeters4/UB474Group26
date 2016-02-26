@@ -8,7 +8,7 @@ def initializeWeights(n_in,n_out):
     """
     # initializeWeights return the random weights for Neural Network given the
     # number of node in the input layer and output layer
-
+    # this is a new comment in this python program test
     # Input:
     # n_in: number of nodes of the input layer
     # n_out: number of nodes of the output layer
