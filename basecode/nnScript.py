@@ -117,9 +117,6 @@ def preprocess():
     
     return train_data, train_label, validation_data, validation_label, test_data, test_label
     
-    
-    
-
 def nnObjFunction(params, *args):
     """% nnObjFunction computes the value of objective function (negative log 
     %   likelihood error function with regularization) given the parameters 
@@ -170,13 +167,14 @@ def nnObjFunction(params, *args):
     #
     #
     #
-    
+    """training_data: matrix of training data. Each row of this matrix represents the feature vector of a particular image"""
+    training_data = 
     
     
     #Make sure you reshape the gradient matrices to a 1D array. for instance if your gradient matrices are grad_w1 and grad_w2
     #you would use code similar to the one below to create a flat array
-    #obj_grad = np.concatenate((grad_w1.flatten(), grad_w2.flatten()),0)
-    obj_grad = np.array([])
+    obj_grad = np.concatenate((grad_w1.flatten(), grad_w2.flatten()),0)
+    #obj_grad = np.array([])
     
     return (obj_val,obj_grad)
 
