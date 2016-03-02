@@ -61,8 +61,6 @@ def preprocess():
     mat = loadmat('mnist_all.mat') #loads the MAT object as a Dictionary
     
     #Pick a reasonable size for validation data
-	
-	mat = loadmat('mnist_all.mat') #loads the MAT object as a Dictionary
 
     train_data = np.array([])
     train_label = np.array([])
@@ -93,6 +91,7 @@ def preprocess():
         validation_label = np.hstack((validation_label, train_label[index]))
         train_data = np.delete(train_data, index, 0)
         train_label = np.delete(train_label, index)
+    
     #puts all of the test data into a 60000x784 array and puts the true labels into a 60000 length array
     for i in range(10):
         testx = mat['test'+str(i)]
