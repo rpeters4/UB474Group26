@@ -61,15 +61,53 @@ def preprocess():
     mat = loadmat('mnist_all.mat') #loads the MAT object as a Dictionary
     
     #Pick a reasonable size for validation data
-    
-    
-    #Your code here
+	
+	mat = loadmat('mnist_all.mat') #loads the MAT object as a Dictionary
+
     train_data = np.array([])
     train_label = np.array([])
     validation_data = np.array([])
     validation_label = np.array([])
     test_data = np.array([])
     test_label = np.array([])
+
+    #puts all of the training data into a 60000x784 array and puts the true labels into a 60000 length array
+    for i in range(10):
+        trainx = mat['train'+str(i)]
+        if len(train_data) == 0:
+            train_data = trainx
+        else:
+            train_data = np.vstack((train_data, trainx))
+        train_label = np.hstack((train_label, np.full(len(trainx),0,dtype=int)))
+    print len(train_data)
+    print len(train_label)
+    print mat.keys()
+
+    #extracts 10000 random entries from the training data and puts it into the validation data
+    for i in range(10):
+        index = np.random.randint(0, len(train_label))
+        if len(validation_data) == 0:
+            validation_data = train_data[index, :]
+        else:
+            validation_data = np.vstack((validation_data, train_data[index,:]))
+        validation_label = np.hstack((validation_label, train_label[index]))
+        train_data = np.delete(train_data, index, 0)
+        train_label = np.delete(train_label, index)
+    #puts all of the test data into a 60000x784 array and puts the true labels into a 60000 length array
+    for i in range(10):
+        testx = mat['test'+str(i)]
+        if len(test_data) == 0:
+            test_data = testx
+        else:
+            test_data = np.vstack((test_data, testx))
+        test_label = np.hstack((test_label, np.full(len(testx),0,dtype=int)))
+
+    print validation_data.shape
+    print train_data.shape
+    print len(train_label)
+    print len(test_label)
+    print test_data.shape
+    #Pick a reasonable size for validation data
     
     return train_data, train_label, validation_data, validation_label, test_data, test_label
     
