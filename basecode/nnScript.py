@@ -102,7 +102,7 @@ def preprocess():
         test_label = np.hstack((test_label, np.full(len(testx),0,dtype=int)))
 
 
-
+    """this is a test edit"""
     """normalize the data sets"""
     train_data = train_data / 255
     test_data  = test_data  / 255
