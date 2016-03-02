@@ -101,12 +101,19 @@ def preprocess():
             test_data = np.vstack((test_data, testx))
         test_label = np.hstack((test_label, np.full(len(testx),0,dtype=int)))
 
-    print validation_data.shape
+
+
+    """normalize the data sets"""
+    train_data = train_data / 255
+    test_data  = test_data  / 255
+
+    """print validation_data.shape
     print train_data.shape
     print len(train_label)
     print len(test_label)
     print test_data.shape
-    #Pick a reasonable size for validation data
+    #Pick a reasonable size for validation data"""
+
     
     return train_data, train_label, validation_data, validation_label, test_data, test_label
     
