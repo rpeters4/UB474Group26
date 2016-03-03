@@ -193,14 +193,18 @@ def nnObjFunction(params, *args):
     		,[-1,-1,-1,-1,-1,-1,-1,-1, 1,-1]   #8
     		,[-1,-1,-1,-1,-1,-1,-1,-1,-1, 1])  #9
 
-    zero_expected = np.array([1,-1,-1,-1,-1,-1,-1,-1,-1,-1]);
+    #gradient for w2
+    delta = (expected - output)*(1-output)*(output) #equation 9
+     
+
+    """zero_expected = np.array([1,-1,-1,-1,-1,-1,-1,-1,-1,-1]);
     j = 0.0
     for i in range(10):
         j += (zero_expected[i]-output[i])**2
     j = j/2
     print j
     grad_j = np.gradient(zero_expected)
-    print grad_j
+    print grad_j"""
 
     #Make sure you reshape the gradient matrices to a 1D array. for instance if your gradient matrices are grad_w1 and grad_w2
     #you would use code similar to the one below to create a flat array
