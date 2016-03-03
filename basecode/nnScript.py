@@ -168,6 +168,7 @@ def nnObjFunction(params, *args):
     #
     #
     #
+<<<<<<< HEAD
     #
     """training_data: matrix of training data. Each row of this matrix represents the feature vector of a particular image"""
     print "hi"
@@ -186,6 +187,10 @@ def nnObjFunction(params, *args):
     print output
     print "hello"
 
+=======
+    # 
+    
+>>>>>>> 9c1d5baf9eb57a28d9f8b26dfe7f12bcedac84db
 
     #Make sure you reshape the gradient matrices to a 1D array. for instance if your gradient matrices are grad_w1 and grad_w2
     #you would use code similar to the one below to create a flat array
