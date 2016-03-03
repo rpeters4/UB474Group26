@@ -180,15 +180,27 @@ def nnObjFunction(params, *args):
         result = np.vstack((result,1))
         output = sigmoid(np.dot(w2 ,result))
         #print output
-        zero_expected = np.array([1,-1,-1,-1,-1,-1,-1,-1,-1,-1]);
-        j = 0.0
-        for i in range(10):
-            j += (zero_expected[i]-output[i])**2
-        j = j/2
-        print j
-        grad_j = np.gradient(zero_expected)
-        print grad_j
+        
+    #expected values
+    expected = 	([ 1,-1,-1,-1,-1,-1,-1,-1,-1,-1]   #0 
+    		,[-1, 1,-1,-1,-1,-1,-1,-1,-1,-1]   #1
+    		,[-1,-1, 1,-1,-1,-1,-1,-1,-1,-1]   #2
+    		,[-1,-1,-1, 1,-1,-1,-1,-1,-1,-1]   #3
+    		,[-1,-1,-1,-1, 1,-1,-1,-1,-1,-1]   #4
+    		,[-1,-1,-1,-1,-1, 1,-1,-1,-1,-1]   #5
+    		,[-1,-1,-1,-1,-1,-1, 1,-1,-1,-1]   #6
+    		,[-1,-1,-1,-1,-1,-1,-1, 1,-1,-1]   #7
+    		,[-1,-1,-1,-1,-1,-1,-1,-1, 1,-1]   #8
+    		,[-1,-1,-1,-1,-1,-1,-1,-1,-1, 1])  #9
 
+    zero_expected = np.array([1,-1,-1,-1,-1,-1,-1,-1,-1,-1]);
+    j = 0.0
+    for i in range(10):
+        j += (zero_expected[i]-output[i])**2
+    j = j/2
+    print j
+    grad_j = np.gradient(zero_expected)
+    print grad_j
 
     #Make sure you reshape the gradient matrices to a 1D array. for instance if your gradient matrices are grad_w1 and grad_w2
     #you would use code similar to the one below to create a flat array
