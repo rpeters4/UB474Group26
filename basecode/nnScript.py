@@ -166,11 +166,9 @@ def nnObjFunction(params, *args):
     #
     #
     #
-    #
-    """training_data: matrix of training data. Each row of this matrix represents the feature vector of a particular image"""
-    training_data = 
+    # 
     
-    
+
     #Make sure you reshape the gradient matrices to a 1D array. for instance if your gradient matrices are grad_w1 and grad_w2
     #you would use code similar to the one below to create a flat array
     obj_grad = np.concatenate((grad_w1.flatten(), grad_w2.flatten()),0)
