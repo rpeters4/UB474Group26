@@ -168,29 +168,19 @@ def nnObjFunction(params, *args):
     #
     #
     #
-<<<<<<< HEAD
     #
     """training_data: matrix of training data. Each row of this matrix represents the feature vector of a particular image"""
-    print "hi"
     training_data = np.hstack((train_data, np.full((len(training_label),1),1,dtype=int)))
-    print "hi"
-    in_data = training_data[0, :]
-    in_data_t = np.transpose(in_data)
-    print in_data.shape
-    print in_data_t.shape
-    print "hi"
-    a = np.dot(in_data_t, w1)
-    at = np.transpose(a)
-    print ase
-    print "hi"
-    o = np.dot(at ,w2)
-    print output
-    print "hello"
+    for i in range(len(training_label)):
+        in_data = training_data[i, :]
+        in_data_t = np.reshape(in_data, (len(in_data),1))
+        result = np.dot(w1, in_data_t)
+        result = sigmoid(result)
+        result = np.vstack((result,1))
+        output = np.dot(w2 ,result)
+        output = sigmoid(output)
+        print output
 
-=======
-    # 
-    
->>>>>>> 9c1d5baf9eb57a28d9f8b26dfe7f12bcedac84db
 
     #Make sure you reshape the gradient matrices to a 1D array. for instance if your gradient matrices are grad_w1 and grad_w2
     #you would use code similar to the one below to create a flat array
