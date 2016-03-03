@@ -169,7 +169,7 @@ def nnObjFunction(params, *args):
     #
     #
     #
-    """training_data: matrix of training data. Each row of this matrix represents the feature vector of a particular image"""
+    """feedforward begin"""
     training_data = np.hstack((train_data, np.full((len(training_label),1),1,dtype=int)))
     for i in range(len(training_label)):
         in_data = training_data[i, :]
@@ -179,7 +179,19 @@ def nnObjFunction(params, *args):
         result = np.vstack((result,1))
         output = np.dot(w2 ,result)
         output = sigmoid(output)
-        print output
+        #print output
+    """feedforward end"""
+    
+    """backward propagation begin"""
+    
+    """in order to backpropagate, we need to find the gradient of w1 and w2"""
+    expected = np.zeros((output.shape[0], output.shape[1]))
+    	for x in range(0, training_data.shape[0]):
+		expected[x, int(training_label[x])] = 1.0
+    print expected
+
+
+    """backward propagation end  """
 
 
     #Make sure you reshape the gradient matrices to a 1D array. for instance if your gradient matrices are grad_w1 and grad_w2
