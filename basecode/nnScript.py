@@ -178,24 +178,37 @@ def nnObjFunction(params, *args):
         result = sigmoid(result)
         result = np.vstack((result,1))
         output = sigmoid(np.dot(w2 ,result))
-
         #print output
-        zero_expected = np.reshape(np.array([1,-1,-1,-1,-1,-1,-1,-1,-1,-1]), (10,1));
-        j = 0.0
-        for i in range(10):
-            j += (zero_expected[i]-output[i])**2
-        j = j/2
-        delta = (zero_expected - output)*output*(1-output)
-        print delta
-        print j
+
+    #expected values
+    expected = 	([ 1,-1,-1,-1,-1,-1,-1,-1,-1,-1]   #0
+    		,[-1, 1,-1,-1,-1,-1,-1,-1,-1,-1]   #1
+    		,[-1,-1, 1,-1,-1,-1,-1,-1,-1,-1]   #2
+    		,[-1,-1,-1, 1,-1,-1,-1,-1,-1,-1]   #3
+    		,[-1,-1,-1,-1, 1,-1,-1,-1,-1,-1]   #4
+    		,[-1,-1,-1,-1,-1, 1,-1,-1,-1,-1]   #5
+    		,[-1,-1,-1,-1,-1,-1, 1,-1,-1,-1]   #6
+    		,[-1,-1,-1,-1,-1,-1,-1, 1,-1,-1]   #7
+    		,[-1,-1,-1,-1,-1,-1,-1,-1, 1,-1]   #8
+    		,[-1,-1,-1,-1,-1,-1,-1,-1,-1, 1])  #9
+
+    #gradient for w2
+    delta = (expected - output)*(1-output)*(output) #equation 9
 
 
-
+    """zero_expected = np.array([1,-1,-1,-1,-1,-1,-1,-1,-1,-1]);
+    j = 0.0
+    for i in range(10):
+        j += (zero_expected[i]-output[i])**2
+    j = j/2
+    print j
+    grad_j = np.gradient(zero_expected)
+    print grad_j"""
 
     #Make sure you reshape the gradient matrices to a 1D array. for instance if your gradient matrices are grad_w1 and grad_w2
     #you would use code similar to the one below to create a flat array
-    obj_grad = np.concatenate((grad_w1.flatten(), grad_w2.flatten()),0)
-    #obj_grad = np.array([])
+    #obj_grad = np.concatenate((grad_w1.flatten(), grad_w2.flatten()),0)
+    obj_grad = np.array([])
 
     return (obj_val,obj_grad)
 
@@ -219,10 +232,25 @@ def nnPredict(w1,w2,data):
     % Output:
     % label: a column vector of predicted labels"""
 
-    labels = np.array([])
-    #Your code here
-
-    return labels
+    # labels = np.array([])
+    # #Your code here
+    # data = np.hstack((data, np.full((len(test_label),1),1,dtype=int)))
+    # for i in range(len(test_label)):
+    #     in_data = training_data[i, :]
+    #     in_data_t = np.reshape(in_data, (len(in_data),1))
+    #     result = np.dot(w1, in_data_t)
+    #     result = sigmoid(result)
+    #     result = np.vstack((result,1))
+    #     output = sigmoid(np.dot(w2 ,result))
+    #     label = 0
+    #     maxval = 0.0
+    #     for i in range(10):
+    #         if output.item(i) > maxval:
+    #             label = i
+    #     print label
+    #     labels = np.vstack((labels, i))
+    #
+    # return labels
 
 
 
