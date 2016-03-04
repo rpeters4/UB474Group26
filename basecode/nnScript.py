@@ -232,25 +232,25 @@ def nnPredict(w1,w2,data):
     % Output:
     % label: a column vector of predicted labels"""
 
-    # labels = np.array([])
-    # #Your code here
-    # data = np.hstack((data, np.full((len(test_label),1),1,dtype=int)))
-    # for i in range(len(test_label)):
-    #     in_data = training_data[i, :]
-    #     in_data_t = np.reshape(in_data, (len(in_data),1))
-    #     result = np.dot(w1, in_data_t)
-    #     result = sigmoid(result)
-    #     result = np.vstack((result,1))
-    #     output = sigmoid(np.dot(w2 ,result))
-    #     label = 0
-    #     maxval = 0.0
-    #     for i in range(10):
-    #         if output.item(i) > maxval:
-    #             label = i
-    #     print label
-    #     labels = np.vstack((labels, i))
-    #
-    # return labels
+     labels = np.array([])
+     #Your code here
+     data = np.hstack((data, np.full((len(test_label),1),1,dtype=int)))
+     for i in range(len(test_label)):
+         in_data = training_data[i, :]
+         in_data_t = np.reshape(in_data, (len(in_data),1))
+         result = np.dot(w1, in_data_t)
+         result = sigmoid(result)
+         result = np.vstack((result,1))
+         output = sigmoid(np.dot(w2 ,result))
+         label = 0
+         maxval = 0.0
+         for i in range(10):
+             if output.item(i) > maxval:
+                 label = i
+         print label
+         labels = np.vstack((labels, i))
+     
+     return labels
 
 
 
