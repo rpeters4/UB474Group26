@@ -279,7 +279,7 @@ initial_w2 = initializeWeights(n_hidden, n_class);
 initialWeights = np.concatenate((initial_w1.flatten(), initial_w2.flatten()),0)
 
 # set the regularization hyper-parameter
-lambdaval = 0.1;
+lambdaval = 0.5;
 
 
 args = (n_input, n_hidden, n_class, train_data, train_label, lambdaval)
